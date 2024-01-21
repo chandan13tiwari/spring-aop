@@ -1,5 +1,6 @@
 package com.poc.controller;
 
+import com.poc.annotation.TimeLogger;
 import com.poc.exception.RandomException;
 import com.poc.model.Employee;
 import com.poc.service.EmployeeService;
@@ -19,6 +20,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/emp/{id}")
+    @TimeLogger
     public Employee getEmployeeById(@PathVariable("id") int id) {
         log.info("Fetching Employee with Id: {}", id);
         return employeeService.getEmployeeById(id);
@@ -31,6 +33,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/emp/add")
+    @TimeLogger
     public Employee addEmployee(@RequestBody Employee employee) {
         log.info("Adding employee: {}", employee);
         return employeeService.addEmployee(employee);
